@@ -3,7 +3,7 @@
 - Title: Survival Log Vortex Extension
 - Section: the site section (`https://www.nexusmods.com/site/mods/add`), category Modding Tools > Vortex Extensions. Vortex lists an upload of that category in its Extensions page after its listing cycle (1.0.0 was listed less than 75 minutes after the upload), with the numeric game id of `info.json` (`9894`). Check the list at `https://api.nexusmods.com/v3/vortex/extensions`.
 - Mod id and URL: 2471, https://www.nexusmods.com/site/mods/2471 (published 2026-10-18)
-- Version: the version of `package.json` (`1.0.0`), the same as the git tag `v1.0.0` and the archive name.
+- Version: the version of `package.json` (`1.0.1`), the same as the git tag `v1.0.1` and the archive name.
 - File under Manage Files: the archive `sl-vortex-extension-<version>.zip` of the GitHub release, display name `Survival Log Vortex Extension <version>`, marked as the main file. Archive the file of the previous version.
 - Short description: `short-description.txt`. Description: `description.bbcode`.
 - Requirements: none on Nexus (an extension works only in Vortex anyway). Name the BepInEx Pack for Survival Log (`survivallog/mods/12`) under the description, not as a Nexus requirement: Vortex downloads it.

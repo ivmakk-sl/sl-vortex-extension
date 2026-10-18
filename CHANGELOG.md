@@ -4,6 +4,8 @@ All notable changes to this extension are documented here. The format is based o
 
 ## [Unreleased]
 
+## [1.0.1] - 2026-10-18
+
 ### Changed
 
 - The extension has a fixed id (`survivallog`), so Vortex keeps it in one folder and loads only one copy.

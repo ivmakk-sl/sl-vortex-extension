@@ -1,6 +1,6 @@
 {
   "name": "sl-vortex-extension",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Vortex support for Survival Log: game discovery, the BepInEx pack, and BepInEx plugin mods.",
   "author": "ivmakk",
   "license": "GPL-3.0-only",
