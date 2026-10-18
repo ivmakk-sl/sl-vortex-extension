@@ -1,0 +1,31 @@
+{
+  "name": "sl-vortex-extension",
+  "version": "1.0.0",
+  "description": "Vortex support for Survival Log: game discovery, the BepInEx pack, and BepInEx plugin mods.",
+  "author": "ivmakk",
+  "license": "GPL-3.0-only",
+  "private": true,
+  "main": "dist/index.js",
+  "engines": {
+    "node": ">=22"
+  },
+  "config": {
+    "gameName": "Survival Log",
+    "nexusGameId": 9894
+  },
+  "scripts": {
+    "build": "node -e \"require('fs').rmSync('dist', { recursive: true, force: true })\" && tsc -p tsconfig.build.json && node scripts/build-assets.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "vitest run --passWithNoTests",
+    "package": "npm run build && node scripts/package.mjs",
+    "deploy:dev": "npm run build && node scripts/deploy-dev.mjs"
+  },
+  "devDependencies": {
+    "@nexusmods/vortex-api": "2.7.2",
+    "@types/node": "^22.20.4",
+    "fflate": "^0.8.3",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.4",
+    "vitest": "^5.0.5"
+  }
+}

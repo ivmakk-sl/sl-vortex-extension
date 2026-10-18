@@ -1,0 +1,40 @@
+NOTE: This is a Vortex extension, NOT a mod. It lets the Vortex mod manager manage Survival Log mods.
+
+[size=5][b]What it does[/b][/size]
+[list]
+[*][b]Finds the game.[/b] Vortex finds a Steam install of Survival Log by itself. You can also set the game folder by hand.[/*]
+[*][b]Installs BepInEx.[/b] When the game folder has no BepInEx, Vortex downloads the [url=https://www.nexusmods.com/survivallog/mods/12]BepInEx Pack for Survival Log[/url] and installs it as a mod, with no extra step. The files are the same as when you extract the pack zip by hand.[/*]
+[*][b]Keeps your own BepInEx.[/b] If you already installed BepInEx by hand, Vortex does not download the pack and does not change your BepInEx files. It installs only the mods.[/*]
+[*][b]Installs mods into the right folder.[/b] A mod zip with a [font=Courier New]BepInEx[/font] folder, a zip with only [font=Courier New].dll[/font] files, or a zip with one folder that holds a [font=Courier New].dll[/font] all go into [font=Courier New]BepInEx\plugins[/font]. A mod never puts a file outside the [font=Courier New]BepInEx[/font] folder.[/*]
+[*][b]Removes mods cleanly.[/b] When you remove a mod in Vortex, only its files leave the game folder.[/*]
+[/list]
+Tested with Vortex 2.8.2 and Survival Log 1.1.18902.
+
+[b]This is unofficial.[/b] Neither Nexus Mods nor the developer of Survival Log makes, supports, or endorses this extension. The BepInEx team does not endorse it either.
+
+[size=5][b]Install[/b][/size]
+[list=1]
+[*]In Vortex, open [b]Extensions[/b], search for [b]Survival Log[/b], and install the extension. Or download the zip from the Files tab and drop it onto the Extensions page.[/*]
+[*]Restart Vortex when it asks.[/*]
+[*]Open [b]Games[/b], find [b]Survival Log[/b], and click [b]Add game[/b].[/*]
+[*]Wait a moment. Vortex downloads the BepInEx pack, and [b]BepInEx Pack for Survival Log[/b] shows as Enabled in your mod list.[/*]
+[/list]
+
+[size=5][b]Add mods[/b][/size]
+The Survival Log mod pages have no Mod Manager Download button yet, so download each mod with [b]Manual download[/b]. Then in Vortex, on the [b]Mods[/b] page, drop the zip onto the [b]Drop File(s)[/b] area, or use [b]Install From File[/b].
+
+The first start with a new BepInEx takes longer than normal, opens the BepInEx console window, and needs an internet connection. Do not close the console window, because that also closes the game. Details are on the [url=https://www.nexusmods.com/survivallog/mods/12]BepInEx pack page[/url].
+
+[size=5][b]Good to know[/b][/size]
+[list]
+[*][b]Turn BepInEx off:[/b] disable [b]BepInEx Pack for Survival Log[/b] in Vortex. Do not remove it: Vortex installs it again at the next deploy while the game folder has no BepInEx.[/*]
+[*][b]Two empty folders:[/b] as soon as Vortex finds the game, the extension makes the empty folders [font=Courier New]BepInEx\plugins[/font] and [font=Courier New]BepInEx\patchers[/font] in the game folder. Without them, Vortex shows "Deployment not possible" when you add the game.[/*]
+[*][b]"Missing required mod" with your own BepInEx:[/b] if you installed BepInEx by hand, the Health Check of Vortex can say that a mod misses the BepInEx pack, because Vortex does not see your BepInEx as a mod. Your mods still work. Hide the warning, or let Vortex install the pack.[/*]
+[*][b]Saves:[/b] the extension and Vortex do not touch your save files.[/*]
+[/list]
+
+[size=5][b]Uninstall[/b][/size]
+In Vortex, on the [b]Mods[/b] page, use [b]Purge Mods[/b], then stop managing Survival Log on the [b]Games[/b] page. Vortex removes each file that it put into the game folder. The files that BepInEx made at its first start stay in the [font=Courier New]BepInEx[/font] folder. For a clean game folder, close the game and delete the [font=Courier New]BepInEx[/font] folder. Your save files stay.
+
+[size=5][b]Source and license[/b][/size]
+The source is on [url=https://github.com/ivmakk-sl/sl-vortex-extension]GitHub[/url], licensed under GPL-3.0.
