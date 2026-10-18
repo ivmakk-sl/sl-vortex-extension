@@ -1,0 +1,3 @@
+v1.0.1 - 2026-10-18
+Changed: The extension now has a fixed id, so a new install replaces the old one. This works from 1.0.1 on.
+Changed: Smaller download (the game art is a JPEG now).
