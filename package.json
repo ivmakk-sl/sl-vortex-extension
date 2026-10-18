@@ -10,6 +10,7 @@
     "node": ">=22"
   },
   "config": {
+    "gameId": "survivallog",
     "gameName": "Survival Log",
     "nexusGameId": 9894
   },

@@ -4,6 +4,11 @@ All notable changes to this extension are documented here. The format is based o
 
 ## [Unreleased]
 
+### Changed
+
+- The extension has a fixed id (`survivallog`), so Vortex keeps it in one folder and loads only one copy.
+- The game art is a JPEG, which makes the download smaller.
+
 ## [1.0.0] - 2026-10-18
 
 ### Added

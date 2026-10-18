@@ -9,4 +9,4 @@ const pkg = JSON.parse(readFileSync(new URL("package.json", root), "utf8"));
 
 mkdirSync(dist, { recursive: true });
 writeFileSync(new URL("info.json", dist), JSON.stringify(makeInfo(pkg), null, 2) + "\n");
-copyFileSync(new URL("assets/gameart.png", root), new URL("gameart.png", dist));
+copyFileSync(new URL("assets/gameart.jpg", root), new URL("gameart.jpg", dist));

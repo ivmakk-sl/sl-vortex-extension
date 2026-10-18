@@ -49,7 +49,7 @@ npm test
 npm run package
 ```
 
-`npm run package` writes `dist/sl-vortex-extension-<version>.zip` with `info.json`, `index.js`, the other compiled files, and `gameart.png` at the root. `npm run deploy:dev` copies the build into `%APPDATA%\Vortex\plugins\sl-vortex-extension\` for a test in Vortex; restart Vortex to load it.
+`npm run package` writes `dist/sl-vortex-extension-<version>.zip` with `info.json`, `index.js`, the other compiled files, and `gameart.jpg` at the root. `npm run deploy:dev` copies the build into `%APPDATA%\Vortex\plugins\survivallog\` (the folder of a Vortex install from Nexus, which it replaces) for a test in Vortex; restart Vortex to load it.
 
 - `src/common.ts` - the game constants: the Steam app id, the executable, the Nexus game id, and the pack file that Vortex uses when it cannot read the file list of the pack page.
 - `src/pack.ts` - the choice of the pack file (the newest main file of the pack page, from the public Nexus API) and the check for a BepInEx install in the game folder.

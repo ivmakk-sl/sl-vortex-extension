@@ -78,7 +78,7 @@ function main(context: types.IExtensionContext): boolean {
   context.registerGame({
     id: GAME_ID,
     name: GAME_NAME,
-    logo: "gameart.png",
+    logo: "gameart.jpg",
     mergeMods: true,
     requiresCleanup: true,
     // Mods deploy from the game root; each installer sets a BepInEx mod type with its own folder.

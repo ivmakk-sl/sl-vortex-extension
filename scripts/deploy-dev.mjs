@@ -6,7 +6,8 @@ import { fileURLToPath } from "node:url";
 const dist = fileURLToPath(new URL("../dist/", import.meta.url));
 const appData = process.env.APPDATA;
 if (!appData) throw new Error("APPDATA is not set: the dev deploy runs on Windows only");
-const target = join(appData, "Vortex", "plugins", "sl-vortex-extension");
+// The folder of a Vortex install from Nexus (the info.json id), so a dev build replaces it.
+const target = join(appData, "Vortex", "plugins", "survivallog");
 
 if (existsSync(target)) rmSync(target, { recursive: true });
 mkdirSync(target, { recursive: true });
