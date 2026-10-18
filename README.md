@@ -14,7 +14,7 @@ Tested with Vortex 2.8.2 and Survival Log 1.1.18902 (Steam build 25984240).
 
 ## Install
 
-1. In Vortex, open **Extensions**, search for **Survival Log**, and install the extension. Or download the zip from [Releases](https://github.com/ivmakk-sl/sl-vortex-extension/releases) and drop it onto the Extensions page.
+1. Click **Mod manager download** in the Files tab of the [Nexus page](https://www.nexusmods.com/site/mods/2471). Or in Vortex, open **Extensions**, search for **Survival Log**, and install the extension.
 2. Restart Vortex when it asks.
 3. Open **Games**, find **Survival Log** (it shows a Steam badge when Vortex found your Steam install), and click **Add game**.
 4. Wait a moment. Vortex downloads the BepInEx pack, and **BepInEx Pack for Survival Log** shows as Enabled in your mod list.
