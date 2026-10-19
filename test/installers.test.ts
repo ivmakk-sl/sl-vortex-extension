@@ -72,6 +72,21 @@ describe("BepInEx layout installer", () => {
     expect(copiesOf(instructions)).toEqual([[p("SomeMod-1.0/BepInEx/plugins/SomeMod.dll"), p("plugins/SomeMod.dll")]]);
   });
 
+  it("puts a DLL next to BepInEx/ into the plugins folder and leaves out the other files there", async () => {
+    const mixed = vortexList(["BepInEx/", "BepInEx/config/", "BepInEx/config/com.x.cfg", "MyMod.dll", "readme.txt"]);
+    expect((await testBepInExLayout(mixed, "survivallog")).supported).toBe(true);
+    const { instructions } = await installBepInExLayout(mixed);
+    expect(copiesOf(instructions)).toEqual([
+      [p("BepInEx/config/com.x.cfg"), p("config/com.x.cfg")],
+      ["MyMod.dll", p("plugins/MyMod.dll")],
+    ]);
+    const nested = vortexList(["SomeMod-1.0/", "SomeMod-1.0/BepInEx/", "SomeMod-1.0/BepInEx/config/x.cfg", "SomeMod-1.0/SomeMod.dll"]);
+    expect(copiesOf((await installBepInExLayout(nested)).instructions)).toEqual([
+      [p("SomeMod-1.0/BepInEx/config/x.cfg"), p("config/x.cfg")],
+      [p("SomeMod-1.0/SomeMod.dll"), p("plugins/SomeMod.dll")],
+    ]);
+  });
+
   it("does not support the pack zip or another game", async () => {
     expect((await testBepInExLayout(PACK, "survivallog")).supported).toBe(false);
     expect((await testBepInExLayout(TRAPLINE, "valheim")).supported).toBe(false);

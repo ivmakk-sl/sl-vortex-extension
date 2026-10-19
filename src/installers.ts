@@ -74,13 +74,19 @@ export async function testBepInExLayout(files: readonly string[], gameId: string
   return result(gameId === GAME_ID && !isPack(files) && bepinexDepth(files) !== undefined);
 }
 
-/** Each file under `BepInEx/` goes to its path after `BepInEx/`; a file outside that folder is left out. */
+/**
+ * Each file under `BepInEx/` goes to its path after `BepInEx/`, and a DLL next to that folder goes into the
+ * plugins folder. Any other file outside the folder (a readme) is left out.
+ */
 export async function installBepInExLayout(files: readonly string[]): Promise<types.IInstallResult> {
   const depth = bepinexDepth(files) ?? 0;
   const copies = fileEntries(files)
     .map((f) => [f, segments(f)] as const)
-    .filter(([, s]) => s.length > depth + 1 && lower(s[depth]) === "bepinex")
-    .map(([f, s]): [string, string] => [f, s.slice(depth + 1).join(path.sep)]);
+    .flatMap(([f, s]): [string, string][] => {
+      if (s.length > depth + 1 && lower(s[depth]) === "bepinex") return [[f, s.slice(depth + 1).join(path.sep)]];
+      if (s.length === depth + 1 && isDll(f)) return [[f, path.join("plugins", s[depth])]];
+      return [];
+    });
   return modInstall(MODTYPE_ROOT, copies);
 }
 

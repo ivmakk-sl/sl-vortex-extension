@@ -4,6 +4,11 @@ All notable changes to this extension are documented here. The format is based o
 
 ## [Unreleased]
 
+### Fixed
+
+- A mod archive with a `BepInEx/` folder and a DLL next to it installs that DLL into `BepInEx/plugins/`; before, the DLL was left out.
+- The BepInEx pack download takes only a file with "BepInEx" in its name, so another main file of the pack page cannot replace the pack.
+
 ## [1.0.1] - 2026-10-18
 
 ### Changed
