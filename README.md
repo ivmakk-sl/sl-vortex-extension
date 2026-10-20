@@ -37,7 +37,7 @@ Start the game from Vortex (**Play**) or from Steam. The first start with a new 
 - **Two empty folders:** as soon as Vortex finds the game, the extension makes the empty folders `BepInEx\plugins` and `BepInEx\patchers` in the game folder. Without them, Vortex shows "Deployment not possible" when you add the game.
 - **"Missing required mod" with your own BepInEx:** if you installed BepInEx by hand, the Health Check of Vortex can say that a mod misses the BepInEx pack, because Vortex does not see your BepInEx as a mod. Your mods still work. Hide the warning, or let Vortex install the pack.
 - **Saves:** the extension and Vortex do not touch your save files.
-- **"Game updated" after the update to 1.0.2:** With extension 1.0.1, Vortex showed the Unity version `6000.2.7.10444810` as the game version. After the update of the extension, Vortex shows the notice "Game updated" once, because the version changes to the real game version. Nothing changed in the game.
+- **"Game updated" after the update to 1.0.2:** With extension 1.0.1, Vortex showed the Unity version `6000.2.7.24586` as the game version. After the update of the extension, Vortex shows the notice "Game updated" once, because the version changes to the real game version. Nothing changed in the game.
 
 ## Uninstall
 
