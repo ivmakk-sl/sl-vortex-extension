@@ -20,8 +20,13 @@ describe("pickPackFile", () => {
   });
 
   it("picks the newest main file", () => {
-    const newer = { fileId: 80, name: "x", version: "6.0.0-be.800", category: "MAIN", date: 1795000000 };
+    const newer = { fileId: 80, name: "BepInEx Pack 6.0.0-be.800", version: "6.0.0-be.800", category: "MAIN", date: 1795000000 };
     expect(pickPackFile([...LIVE_FILES, newer])?.fileId).toBe(80);
+  });
+
+  it("never picks a main file without BepInEx in its name, such as the Unity libraries", () => {
+    const libs = { ...LIVE_FILES[2], category: "MAIN" };
+    expect(pickPackFile([...LIVE_FILES, libs])?.fileId).toBe(16);
   });
 
   it("breaks a tie of dates by the higher file id", () => {

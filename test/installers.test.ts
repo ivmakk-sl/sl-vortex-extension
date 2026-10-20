@@ -6,12 +6,16 @@ import {
   installBepInExPack,
   installLooseDlls,
   installPluginFolder,
+  installUnityLibs,
+  INSTALLERS,
   testBepInExLayout,
   testBepInExPack,
   testLooseDlls,
   testPluginFolder,
+  testUnityLibs,
 } from "../src/installers";
 import { PACK_ENTRIES } from "./fixtures/packEntries";
+import { UNITY_LIBS_ENTRIES } from "./fixtures/unityLibsEntries";
 
 /** Vortex gives the archive entries with the separator of the OS, and a folder entry ends with it. */
 const vortexList = (entries: readonly string[]) => entries.map((e) => e.split("/").join(path.sep));
@@ -70,6 +74,21 @@ describe("BepInEx layout installer", () => {
     expect((await testBepInExLayout(NESTED, "survivallog")).supported).toBe(true);
     const { instructions } = await installBepInExLayout(NESTED);
     expect(copiesOf(instructions)).toEqual([[p("SomeMod-1.0/BepInEx/plugins/SomeMod.dll"), p("plugins/SomeMod.dll")]]);
+  });
+
+  it("puts a DLL next to BepInEx/ into the plugins folder and leaves out the other files there", async () => {
+    const mixed = vortexList(["BepInEx/", "BepInEx/config/", "BepInEx/config/com.x.cfg", "MyMod.dll", "readme.txt"]);
+    expect((await testBepInExLayout(mixed, "survivallog")).supported).toBe(true);
+    const { instructions } = await installBepInExLayout(mixed);
+    expect(copiesOf(instructions)).toEqual([
+      [p("BepInEx/config/com.x.cfg"), p("config/com.x.cfg")],
+      ["MyMod.dll", p("plugins/MyMod.dll")],
+    ]);
+    const nested = vortexList(["SomeMod-1.0/", "SomeMod-1.0/BepInEx/", "SomeMod-1.0/BepInEx/config/x.cfg", "SomeMod-1.0/SomeMod.dll"]);
+    expect(copiesOf((await installBepInExLayout(nested)).instructions)).toEqual([
+      [p("SomeMod-1.0/BepInEx/config/x.cfg"), p("config/x.cfg")],
+      [p("SomeMod-1.0/SomeMod.dll"), p("plugins/SomeMod.dll")],
+    ]);
   });
 
   it("does not support the pack zip or another game", async () => {
@@ -134,4 +153,57 @@ describe("each mod installer", () => {
       }
     });
   }
+});
+
+const UNITY_LIBS = vortexList(UNITY_LIBS_ENTRIES);
+
+describe("Unity libraries refusal", () => {
+  it("supports the Unity libraries file for Survival Log only", async () => {
+    expect((await testUnityLibs(UNITY_LIBS, "survivallog")).supported).toBe(true);
+    expect((await testUnityLibs(UNITY_LIBS, "valheim")).supported).toBe(false);
+  });
+
+  it("does not support a mod DLL with a Unity DLL, a Unity DLL in a folder, or a mod zip", async () => {
+    const withMod = vortexList(["MyMod.dll", "UnityEngine.UI.dll"]);
+    const inFolder = vortexList(["libs/", "libs/UnityEngine.dll"]);
+    expect((await testUnityLibs(withMod, "survivallog")).supported).toBe(false);
+    expect((await testUnityLibs(inFolder, "survivallog")).supported).toBe(false);
+    expect((await testUnityLibs(TRAPLINE, "survivallog")).supported).toBe(false);
+  });
+
+  it("stops the install with one fatal error that names the unity-libs folder", async () => {
+    const { instructions } = await installUnityLibs();
+    expect(instructions).toHaveLength(1);
+    expect(instructions[0]).toMatchObject({ type: "error", value: "fatal" });
+    expect(instructions[0].source).toContain("BepInEx\\unity-libs");
+  });
+
+  it("is a file that the pack installer leaves and the loose DLL installer takes, so it needs its own priority", async () => {
+    expect((await testBepInExPack(UNITY_LIBS, "survivallog")).supported).toBe(false);
+    expect((await testLooseDlls(UNITY_LIBS, "survivallog")).supported).toBe(true);
+  });
+});
+
+describe("installer table", () => {
+  it("lists the installers in priority order", () => {
+    const sorted = [...INSTALLERS].sort((a, b) => a.priority - b.priority);
+    expect(sorted.map((i) => i.id)).toEqual(INSTALLERS.map((i) => i.id));
+    expect(INSTALLERS.map((i) => [i.id, i.priority])).toEqual([
+      ["survivallog-bepinex-pack", 5],
+      ["survivallog-unity-libs", 15],
+      ["survivallog-bepinex-layout", 21],
+      ["survivallog-plugin-folder", 22],
+      ["survivallog-loose-dlls", 23],
+    ]);
+  });
+
+  it("gives the Unity libraries file to its refusal, not to the loose DLL installer", async () => {
+    for (const installer of INSTALLERS) {
+      if ((await installer.test(UNITY_LIBS, "survivallog")).supported) {
+        expect(installer.id).toBe("survivallog-unity-libs");
+        return;
+      }
+    }
+    expect.unreachable("no installer supports the Unity libraries file");
+  });
 });

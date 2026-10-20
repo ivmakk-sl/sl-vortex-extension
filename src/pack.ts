@@ -32,10 +32,14 @@ function packArchiveName(version: string): string {
   return `BepInExPack_SurvivalLog-${version}.zip`;
 }
 
-/** The newest MAIN file of the pack page (a tie goes to the higher file id), or undefined for none. */
+/**
+ * The newest MAIN file of the pack page with "BepInEx" in its name (a tie goes to the higher file id), or
+ * undefined for none. The name check keeps out another file of the page, such as the Unity libraries, if it
+ * is ever marked MAIN.
+ */
 export function pickPackFile(files: readonly NexusFile[]): PackFile | undefined {
   const main = files
-    .filter((f) => f.category === "MAIN")
+    .filter((f) => f.category === "MAIN" && /bepinex/i.test(f.name))
     .sort((a, b) => b.date - a.date || b.fileId - a.fileId)[0];
   return main && { fileId: main.fileId, version: main.version, archiveName: packArchiveName(main.version) };
 }
