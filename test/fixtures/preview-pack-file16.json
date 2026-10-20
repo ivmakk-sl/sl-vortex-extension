@@ -1,0 +1,692 @@
+{
+  "version": 1,
+  "files": [
+    {
+      "file_path": ".doorstop_version"
+    },
+    {
+      "file_path": "BepInEx/NOTICE-BepInExPack.txt"
+    },
+    {
+      "file_path": "BepInEx/core/0Harmony.dll"
+    },
+    {
+      "file_path": "BepInEx/core/AsmResolver.DotNet.dll"
+    },
+    {
+      "file_path": "BepInEx/core/AsmResolver.PE.File.dll"
+    },
+    {
+      "file_path": "BepInEx/core/AsmResolver.PE.dll"
+    },
+    {
+      "file_path": "BepInEx/core/AsmResolver.dll"
+    },
+    {
+      "file_path": "BepInEx/core/AssetRipper.CIL.dll"
+    },
+    {
+      "file_path": "BepInEx/core/AssetRipper.Primitives.dll"
+    },
+    {
+      "file_path": "BepInEx/core/BepInEx.Core.dll"
+    },
+    {
+      "file_path": "BepInEx/core/BepInEx.Core.xml"
+    },
+    {
+      "file_path": "BepInEx/core/BepInEx.Preloader.Core.dll"
+    },
+    {
+      "file_path": "BepInEx/core/BepInEx.Preloader.Core.xml"
+    },
+    {
+      "file_path": "BepInEx/core/BepInEx.Unity.Common.dll"
+    },
+    {
+      "file_path": "BepInEx/core/BepInEx.Unity.Common.xml"
+    },
+    {
+      "file_path": "BepInEx/core/BepInEx.Unity.IL2CPP.dll"
+    },
+    {
+      "file_path": "BepInEx/core/BepInEx.Unity.IL2CPP.dll.config"
+    },
+    {
+      "file_path": "BepInEx/core/BepInEx.Unity.IL2CPP.xml"
+    },
+    {
+      "file_path": "BepInEx/core/Cpp2IL.Core.dll"
+    },
+    {
+      "file_path": "BepInEx/core/Disarm.dll"
+    },
+    {
+      "file_path": "BepInEx/core/Gee.External.Capstone.dll"
+    },
+    {
+      "file_path": "BepInEx/core/Iced.dll"
+    },
+    {
+      "file_path": "BepInEx/core/Il2CppInterop.Common.dll"
+    },
+    {
+      "file_path": "BepInEx/core/Il2CppInterop.Generator.dll"
+    },
+    {
+      "file_path": "BepInEx/core/Il2CppInterop.HarmonySupport.dll"
+    },
+    {
+      "file_path": "BepInEx/core/Il2CppInterop.Runtime.dll"
+    },
+    {
+      "file_path": "BepInEx/core/LibCpp2IL.dll"
+    },
+    {
+      "file_path": "BepInEx/core/Mono.Cecil.Mdb.dll"
+    },
+    {
+      "file_path": "BepInEx/core/Mono.Cecil.Pdb.dll"
+    },
+    {
+      "file_path": "BepInEx/core/Mono.Cecil.Rocks.dll"
+    },
+    {
+      "file_path": "BepInEx/core/Mono.Cecil.dll"
+    },
+    {
+      "file_path": "BepInEx/core/MonoMod.Backports.dll"
+    },
+    {
+      "file_path": "BepInEx/core/MonoMod.ILHelpers.dll"
+    },
+    {
+      "file_path": "BepInEx/core/MonoMod.RuntimeDetour.dll"
+    },
+    {
+      "file_path": "BepInEx/core/MonoMod.Utils.dll"
+    },
+    {
+      "file_path": "BepInEx/core/SemanticVersioning.dll"
+    },
+    {
+      "file_path": "BepInEx/core/StableNameDotNet.dll"
+    },
+    {
+      "file_path": "BepInEx/core/WasmDisassembler.dll"
+    },
+    {
+      "file_path": "BepInEx/core/dobby.dll"
+    },
+    {
+      "file_path": "changelog.txt"
+    },
+    {
+      "file_path": "doorstop_config.ini"
+    },
+    {
+      "file_path": "dotnet/.version"
+    },
+    {
+      "file_path": "dotnet/Microsoft.Bcl.AsyncInterfaces.dll"
+    },
+    {
+      "file_path": "dotnet/Microsoft.CSharp.dll"
+    },
+    {
+      "file_path": "dotnet/Microsoft.DiaSymReader.Native.amd64.dll"
+    },
+    {
+      "file_path": "dotnet/Microsoft.Extensions.DependencyInjection.Abstractions.dll"
+    },
+    {
+      "file_path": "dotnet/Microsoft.Extensions.DependencyInjection.dll"
+    },
+    {
+      "file_path": "dotnet/Microsoft.Extensions.Logging.Abstractions.dll"
+    },
+    {
+      "file_path": "dotnet/Microsoft.Extensions.Logging.dll"
+    },
+    {
+      "file_path": "dotnet/Microsoft.Extensions.Options.dll"
+    },
+    {
+      "file_path": "dotnet/Microsoft.Extensions.Primitives.dll"
+    },
+    {
+      "file_path": "dotnet/Microsoft.NETCore.App.deps.json"
+    },
+    {
+      "file_path": "dotnet/Microsoft.NETCore.App.runtimeconfig.json"
+    },
+    {
+      "file_path": "dotnet/Microsoft.VisualBasic.Core.dll"
+    },
+    {
+      "file_path": "dotnet/Microsoft.VisualBasic.dll"
+    },
+    {
+      "file_path": "dotnet/Microsoft.Win32.Primitives.dll"
+    },
+    {
+      "file_path": "dotnet/Microsoft.Win32.Registry.dll"
+    },
+    {
+      "file_path": "dotnet/System.AppContext.dll"
+    },
+    {
+      "file_path": "dotnet/System.Buffers.dll"
+    },
+    {
+      "file_path": "dotnet/System.Collections.Concurrent.dll"
+    },
+    {
+      "file_path": "dotnet/System.Collections.Immutable.dll"
+    },
+    {
+      "file_path": "dotnet/System.Collections.NonGeneric.dll"
+    },
+    {
+      "file_path": "dotnet/System.Collections.Specialized.dll"
+    },
+    {
+      "file_path": "dotnet/System.Collections.dll"
+    },
+    {
+      "file_path": "dotnet/System.ComponentModel.Annotations.dll"
+    },
+    {
+      "file_path": "dotnet/System.ComponentModel.DataAnnotations.dll"
+    },
+    {
+      "file_path": "dotnet/System.ComponentModel.EventBasedAsync.dll"
+    },
+    {
+      "file_path": "dotnet/System.ComponentModel.Primitives.dll"
+    },
+    {
+      "file_path": "dotnet/System.ComponentModel.TypeConverter.dll"
+    },
+    {
+      "file_path": "dotnet/System.ComponentModel.dll"
+    },
+    {
+      "file_path": "dotnet/System.Configuration.dll"
+    },
+    {
+      "file_path": "dotnet/System.Console.dll"
+    },
+    {
+      "file_path": "dotnet/System.Core.dll"
+    },
+    {
+      "file_path": "dotnet/System.Data.Common.dll"
+    },
+    {
+      "file_path": "dotnet/System.Data.DataSetExtensions.dll"
+    },
+    {
+      "file_path": "dotnet/System.Data.dll"
+    },
+    {
+      "file_path": "dotnet/System.Diagnostics.Contracts.dll"
+    },
+    {
+      "file_path": "dotnet/System.Diagnostics.Debug.dll"
+    },
+    {
+      "file_path": "dotnet/System.Diagnostics.DiagnosticSource.dll"
+    },
+    {
+      "file_path": "dotnet/System.Diagnostics.FileVersionInfo.dll"
+    },
+    {
+      "file_path": "dotnet/System.Diagnostics.Process.dll"
+    },
+    {
+      "file_path": "dotnet/System.Diagnostics.StackTrace.dll"
+    },
+    {
+      "file_path": "dotnet/System.Diagnostics.TextWriterTraceListener.dll"
+    },
+    {
+      "file_path": "dotnet/System.Diagnostics.Tools.dll"
+    },
+    {
+      "file_path": "dotnet/System.Diagnostics.TraceSource.dll"
+    },
+    {
+      "file_path": "dotnet/System.Diagnostics.Tracing.dll"
+    },
+    {
+      "file_path": "dotnet/System.Drawing.Primitives.dll"
+    },
+    {
+      "file_path": "dotnet/System.Drawing.dll"
+    },
+    {
+      "file_path": "dotnet/System.Dynamic.Runtime.dll"
+    },
+    {
+      "file_path": "dotnet/System.Formats.Asn1.dll"
+    },
+    {
+      "file_path": "dotnet/System.Globalization.Calendars.dll"
+    },
+    {
+      "file_path": "dotnet/System.Globalization.Extensions.dll"
+    },
+    {
+      "file_path": "dotnet/System.Globalization.dll"
+    },
+    {
+      "file_path": "dotnet/System.IO.Compression.Brotli.dll"
+    },
+    {
+      "file_path": "dotnet/System.IO.Compression.FileSystem.dll"
+    },
+    {
+      "file_path": "dotnet/System.IO.Compression.Native.dll"
+    },
+    {
+      "file_path": "dotnet/System.IO.Compression.ZipFile.dll"
+    },
+    {
+      "file_path": "dotnet/System.IO.Compression.dll"
+    },
+    {
+      "file_path": "dotnet/System.IO.FileSystem.AccessControl.dll"
+    },
+    {
+      "file_path": "dotnet/System.IO.FileSystem.DriveInfo.dll"
+    },
+    {
+      "file_path": "dotnet/System.IO.FileSystem.Primitives.dll"
+    },
+    {
+      "file_path": "dotnet/System.IO.FileSystem.Watcher.dll"
+    },
+    {
+      "file_path": "dotnet/System.IO.FileSystem.dll"
+    },
+    {
+      "file_path": "dotnet/System.IO.IsolatedStorage.dll"
+    },
+    {
+      "file_path": "dotnet/System.IO.MemoryMappedFiles.dll"
+    },
+    {
+      "file_path": "dotnet/System.IO.Pipes.AccessControl.dll"
+    },
+    {
+      "file_path": "dotnet/System.IO.Pipes.dll"
+    },
+    {
+      "file_path": "dotnet/System.IO.UnmanagedMemoryStream.dll"
+    },
+    {
+      "file_path": "dotnet/System.IO.dll"
+    },
+    {
+      "file_path": "dotnet/System.Linq.Expressions.dll"
+    },
+    {
+      "file_path": "dotnet/System.Linq.Parallel.dll"
+    },
+    {
+      "file_path": "dotnet/System.Linq.Queryable.dll"
+    },
+    {
+      "file_path": "dotnet/System.Linq.dll"
+    },
+    {
+      "file_path": "dotnet/System.Memory.dll"
+    },
+    {
+      "file_path": "dotnet/System.Net.Http.Json.dll"
+    },
+    {
+      "file_path": "dotnet/System.Net.Http.dll"
+    },
+    {
+      "file_path": "dotnet/System.Net.HttpListener.dll"
+    },
+    {
+      "file_path": "dotnet/System.Net.Mail.dll"
+    },
+    {
+      "file_path": "dotnet/System.Net.NameResolution.dll"
+    },
+    {
+      "file_path": "dotnet/System.Net.NetworkInformation.dll"
+    },
+    {
+      "file_path": "dotnet/System.Net.Ping.dll"
+    },
+    {
+      "file_path": "dotnet/System.Net.Primitives.dll"
+    },
+    {
+      "file_path": "dotnet/System.Net.Quic.dll"
+    },
+    {
+      "file_path": "dotnet/System.Net.Requests.dll"
+    },
+    {
+      "file_path": "dotnet/System.Net.Security.dll"
+    },
+    {
+      "file_path": "dotnet/System.Net.ServicePoint.dll"
+    },
+    {
+      "file_path": "dotnet/System.Net.Sockets.dll"
+    },
+    {
+      "file_path": "dotnet/System.Net.WebClient.dll"
+    },
+    {
+      "file_path": "dotnet/System.Net.WebHeaderCollection.dll"
+    },
+    {
+      "file_path": "dotnet/System.Net.WebProxy.dll"
+    },
+    {
+      "file_path": "dotnet/System.Net.WebSockets.Client.dll"
+    },
+    {
+      "file_path": "dotnet/System.Net.WebSockets.dll"
+    },
+    {
+      "file_path": "dotnet/System.Net.dll"
+    },
+    {
+      "file_path": "dotnet/System.Numerics.Vectors.dll"
+    },
+    {
+      "file_path": "dotnet/System.Numerics.dll"
+    },
+    {
+      "file_path": "dotnet/System.ObjectModel.dll"
+    },
+    {
+      "file_path": "dotnet/System.Private.CoreLib.dll"
+    },
+    {
+      "file_path": "dotnet/System.Private.DataContractSerialization.dll"
+    },
+    {
+      "file_path": "dotnet/System.Private.Uri.dll"
+    },
+    {
+      "file_path": "dotnet/System.Private.Xml.Linq.dll"
+    },
+    {
+      "file_path": "dotnet/System.Private.Xml.dll"
+    },
+    {
+      "file_path": "dotnet/System.Reflection.DispatchProxy.dll"
+    },
+    {
+      "file_path": "dotnet/System.Reflection.Emit.ILGeneration.dll"
+    },
+    {
+      "file_path": "dotnet/System.Reflection.Emit.Lightweight.dll"
+    },
+    {
+      "file_path": "dotnet/System.Reflection.Emit.dll"
+    },
+    {
+      "file_path": "dotnet/System.Reflection.Extensions.dll"
+    },
+    {
+      "file_path": "dotnet/System.Reflection.Metadata.dll"
+    },
+    {
+      "file_path": "dotnet/System.Reflection.Primitives.dll"
+    },
+    {
+      "file_path": "dotnet/System.Reflection.TypeExtensions.dll"
+    },
+    {
+      "file_path": "dotnet/System.Reflection.dll"
+    },
+    {
+      "file_path": "dotnet/System.Resources.Reader.dll"
+    },
+    {
+      "file_path": "dotnet/System.Resources.ResourceManager.dll"
+    },
+    {
+      "file_path": "dotnet/System.Resources.Writer.dll"
+    },
+    {
+      "file_path": "dotnet/System.Runtime.CompilerServices.Unsafe.dll"
+    },
+    {
+      "file_path": "dotnet/System.Runtime.CompilerServices.VisualC.dll"
+    },
+    {
+      "file_path": "dotnet/System.Runtime.Extensions.dll"
+    },
+    {
+      "file_path": "dotnet/System.Runtime.Handles.dll"
+    },
+    {
+      "file_path": "dotnet/System.Runtime.InteropServices.RuntimeInformation.dll"
+    },
+    {
+      "file_path": "dotnet/System.Runtime.InteropServices.dll"
+    },
+    {
+      "file_path": "dotnet/System.Runtime.Intrinsics.dll"
+    },
+    {
+      "file_path": "dotnet/System.Runtime.Loader.dll"
+    },
+    {
+      "file_path": "dotnet/System.Runtime.Numerics.dll"
+    },
+    {
+      "file_path": "dotnet/System.Runtime.Serialization.Formatters.dll"
+    },
+    {
+      "file_path": "dotnet/System.Runtime.Serialization.Json.dll"
+    },
+    {
+      "file_path": "dotnet/System.Runtime.Serialization.Primitives.dll"
+    },
+    {
+      "file_path": "dotnet/System.Runtime.Serialization.Xml.dll"
+    },
+    {
+      "file_path": "dotnet/System.Runtime.Serialization.dll"
+    },
+    {
+      "file_path": "dotnet/System.Runtime.dll"
+    },
+    {
+      "file_path": "dotnet/System.Security.AccessControl.dll"
+    },
+    {
+      "file_path": "dotnet/System.Security.Claims.dll"
+    },
+    {
+      "file_path": "dotnet/System.Security.Cryptography.Algorithms.dll"
+    },
+    {
+      "file_path": "dotnet/System.Security.Cryptography.Cng.dll"
+    },
+    {
+      "file_path": "dotnet/System.Security.Cryptography.Csp.dll"
+    },
+    {
+      "file_path": "dotnet/System.Security.Cryptography.Encoding.dll"
+    },
+    {
+      "file_path": "dotnet/System.Security.Cryptography.OpenSsl.dll"
+    },
+    {
+      "file_path": "dotnet/System.Security.Cryptography.Primitives.dll"
+    },
+    {
+      "file_path": "dotnet/System.Security.Cryptography.X509Certificates.dll"
+    },
+    {
+      "file_path": "dotnet/System.Security.Principal.Windows.dll"
+    },
+    {
+      "file_path": "dotnet/System.Security.Principal.dll"
+    },
+    {
+      "file_path": "dotnet/System.Security.SecureString.dll"
+    },
+    {
+      "file_path": "dotnet/System.Security.dll"
+    },
+    {
+      "file_path": "dotnet/System.ServiceModel.Web.dll"
+    },
+    {
+      "file_path": "dotnet/System.ServiceProcess.dll"
+    },
+    {
+      "file_path": "dotnet/System.Text.Encoding.CodePages.dll"
+    },
+    {
+      "file_path": "dotnet/System.Text.Encoding.Extensions.dll"
+    },
+    {
+      "file_path": "dotnet/System.Text.Encoding.dll"
+    },
+    {
+      "file_path": "dotnet/System.Text.Encodings.Web.dll"
+    },
+    {
+      "file_path": "dotnet/System.Text.Json.dll"
+    },
+    {
+      "file_path": "dotnet/System.Text.RegularExpressions.dll"
+    },
+    {
+      "file_path": "dotnet/System.Threading.Channels.dll"
+    },
+    {
+      "file_path": "dotnet/System.Threading.Overlapped.dll"
+    },
+    {
+      "file_path": "dotnet/System.Threading.Tasks.Dataflow.dll"
+    },
+    {
+      "file_path": "dotnet/System.Threading.Tasks.Extensions.dll"
+    },
+    {
+      "file_path": "dotnet/System.Threading.Tasks.Parallel.dll"
+    },
+    {
+      "file_path": "dotnet/System.Threading.Tasks.dll"
+    },
+    {
+      "file_path": "dotnet/System.Threading.Thread.dll"
+    },
+    {
+      "file_path": "dotnet/System.Threading.ThreadPool.dll"
+    },
+    {
+      "file_path": "dotnet/System.Threading.Timer.dll"
+    },
+    {
+      "file_path": "dotnet/System.Threading.dll"
+    },
+    {
+      "file_path": "dotnet/System.Transactions.Local.dll"
+    },
+    {
+      "file_path": "dotnet/System.Transactions.dll"
+    },
+    {
+      "file_path": "dotnet/System.ValueTuple.dll"
+    },
+    {
+      "file_path": "dotnet/System.Web.HttpUtility.dll"
+    },
+    {
+      "file_path": "dotnet/System.Web.dll"
+    },
+    {
+      "file_path": "dotnet/System.Windows.dll"
+    },
+    {
+      "file_path": "dotnet/System.Xml.Linq.dll"
+    },
+    {
+      "file_path": "dotnet/System.Xml.ReaderWriter.dll"
+    },
+    {
+      "file_path": "dotnet/System.Xml.Serialization.dll"
+    },
+    {
+      "file_path": "dotnet/System.Xml.XDocument.dll"
+    },
+    {
+      "file_path": "dotnet/System.Xml.XPath.XDocument.dll"
+    },
+    {
+      "file_path": "dotnet/System.Xml.XPath.dll"
+    },
+    {
+      "file_path": "dotnet/System.Xml.XmlDocument.dll"
+    },
+    {
+      "file_path": "dotnet/System.Xml.XmlSerializer.dll"
+    },
+    {
+      "file_path": "dotnet/System.Xml.dll"
+    },
+    {
+      "file_path": "dotnet/System.dll"
+    },
+    {
+      "file_path": "dotnet/WindowsBase.dll"
+    },
+    {
+      "file_path": "dotnet/clretwrc.dll"
+    },
+    {
+      "file_path": "dotnet/clrjit.dll"
+    },
+    {
+      "file_path": "dotnet/coreclr.dll"
+    },
+    {
+      "file_path": "dotnet/dbgshim.dll"
+    },
+    {
+      "file_path": "dotnet/hostpolicy.dll"
+    },
+    {
+      "file_path": "dotnet/mscordaccore.dll"
+    },
+    {
+      "file_path": "dotnet/mscordaccore_amd64_amd64_6.0.722.32202.dll"
+    },
+    {
+      "file_path": "dotnet/mscordbi.dll"
+    },
+    {
+      "file_path": "dotnet/mscorlib.dll"
+    },
+    {
+      "file_path": "dotnet/mscorrc.dll"
+    },
+    {
+      "file_path": "dotnet/msquic.dll"
+    },
+    {
+      "file_path": "dotnet/netstandard.dll"
+    },
+    {
+      "file_path": "winhttp.dll"
+    }
+  ]
+}

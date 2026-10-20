@@ -116,3 +116,46 @@ export async function testLooseDlls(files: readonly string[], gameId: string): P
 export async function installLooseDlls(files: readonly string[]): Promise<types.IInstallResult> {
   return modInstall(MODTYPE_PLUGIN, fileEntries(files).map((f): [string, string] => [f, f]));
 }
+
+/** The Unity libraries file of the pack page: only `UnityEngine*.dll` files, all at the archive root. */
+function isUnityLibs(files: readonly string[]): boolean {
+  const entries = fileEntries(files);
+  return entries.length > 0 && entries.every((f) => segments(f).length === 1 && /^unityengine.*\.dll$/.test(lower(f)));
+}
+
+export async function testUnityLibs(files: readonly string[], gameId: string): Promise<types.ISupportedResult> {
+  return result(gameId === GAME_ID && isUnityLibs(files));
+}
+
+const UNITY_LIBS_STEPS = [
+  "This file is not a mod: it holds the Unity libraries for BepInEx, and Vortex cannot install it.",
+  "To use it by hand:",
+  "1. Rename the zip to the name in its file description on Nexus, for example 6000.2.7.zip.",
+  "2. Close the game.",
+  "3. Put the zip, not extracted, into BepInEx\\unity-libs in the game folder.",
+].join("\n");
+
+/** Stops the install: Vortex shows the steps, adds no mod, and keeps the archive in Downloads. */
+export async function installUnityLibs(): Promise<types.IInstallResult> {
+  return { instructions: [{ type: "error", value: "fatal", source: UNITY_LIBS_STEPS }] };
+}
+
+export interface Installer {
+  id: string;
+  priority: number;
+  test: (files: readonly string[], gameId: string) => Promise<types.ISupportedResult>;
+  install: (files: readonly string[]) => Promise<types.IInstallResult>;
+}
+
+/**
+ * The installers of the extension in priority order. The pack installer runs before the installers of
+ * modtype-bepinex (10), and the Unity libraries refusal after them, before the loose DLL installer would take
+ * that file. The mod installers run after FOMOD (20).
+ */
+export const INSTALLERS: readonly Installer[] = [
+  { id: "survivallog-bepinex-pack", priority: 5, test: testBepInExPack, install: installBepInExPack },
+  { id: "survivallog-unity-libs", priority: 15, test: testUnityLibs, install: installUnityLibs },
+  { id: "survivallog-bepinex-layout", priority: 21, test: testBepInExLayout, install: installBepInExLayout },
+  { id: "survivallog-plugin-folder", priority: 22, test: testPluginFolder, install: installPluginFolder },
+  { id: "survivallog-loose-dlls", priority: 23, test: testLooseDlls, install: installLooseDlls },
+];

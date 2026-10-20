@@ -1,20 +1,14 @@
+import * as os from "node:os";
 import * as path from "node:path";
 
-import { fs, log, selectors } from "vortex-api";
+import { fs, log, selectors, util } from "vortex-api";
 import type { types } from "vortex-api";
 
 import { EXECUTABLE, GAME_ASSEMBLY, GAME_ID, GAME_NAME, PACK_MOD_ID, STEAM_APP_ID } from "./common";
-import {
-  installBepInExLayout,
-  installBepInExPack,
-  installLooseDlls,
-  installPluginFolder,
-  testBepInExLayout,
-  testBepInExPack,
-  testLooseDlls,
-  testPluginFolder,
-} from "./installers";
+import { INSTALLERS } from "./installers";
 import { hasBepInExCore, lookupPackFile } from "./pack";
+import { openShortcut, SHORTCUTS, type ShellApi, type Shortcut } from "./shortcuts";
+import { parseGameVersion, VERSION_FILE } from "./version";
 
 /**
  * The deploy folders of the BepInEx mod types below the game root. Vortex does not create them, and it
@@ -42,8 +36,16 @@ function ensureModTypeDirsOnDiscovery(api: types.IExtensionApi): void {
   });
 }
 
-// The pack installer runs before the installers of modtype-bepinex (10); the mod installers run after FOMOD (20).
-const PRIORITY = { pack: 5, bepinexLayout: 21, pluginFolder: 22, looseDlls: 23 };
+/**
+ * The game version of `Version.txt`, since the version of the executable is the Unity version. A throw makes
+ * Vortex log the reason and read the executable.
+ */
+async function getGameVersion(gamePath: string): Promise<string> {
+  const file = path.join(gamePath, VERSION_FILE);
+  const version = parseGameVersion(await fs.readFileAsync(file, { encoding: "utf8" }));
+  if (version === undefined) throw new Error(`${file} has no version line and build line`);
+  return version;
+}
 
 /**
  * Gives modtype-bepinex the Nexus file of the pack, or no download when the game folder already has
@@ -72,6 +74,18 @@ async function packDownload(api: types.IExtensionApi) {
   };
 }
 
+/** Opens a shortcut of the folder menu; the preload shell is read at click time, the compiler has no DOM types. */
+async function onShortcut(api: types.IExtensionApi, entry: Shortcut): Promise<void> {
+  const gamePath = selectors.discoveryByGame(api.getState(), GAME_ID)?.path ?? "";
+  const opener = await openShortcut(entry, entry.target(gamePath, os.homedir()), {
+    stat: (target) => fs.statAsync(target),
+    shell: (globalThis as { api?: { shell?: ShellApi } }).api?.shell,
+    opn: (target) => util.opn(target),
+    notify: (message) => api.sendNotification?.({ type: "warning", message, displayMS: 5000 }),
+  });
+  log("debug", "shortcut", { label: entry.label, opener });
+}
+
 function main(context: types.IExtensionContext): boolean {
   context.requireExtension("modtype-bepinex");
 
@@ -87,14 +101,23 @@ function main(context: types.IExtensionContext): boolean {
     requiredFiles: [EXECUTABLE, GAME_ASSEMBLY],
     queryArgs: { steam: [{ id: STEAM_APP_ID }] },
     environment: { SteamAPPId: STEAM_APP_ID },
-    details: { steamAppId: Number(STEAM_APP_ID), nexusPageId: GAME_ID },
+    // Open Game Mods Folder of Vortex opens the plugins folder; the deploy folders stay as they are.
+    details: { steamAppId: Number(STEAM_APP_ID), nexusPageId: GAME_ID, customOpenModsPath: path.join("BepInEx", "plugins") },
     setup: (discovery) => ensureModTypeDirs(discovery.path!),
+    getGameVersion,
   });
 
-  context.registerInstaller("survivallog-bepinex-pack", PRIORITY.pack, testBepInExPack, installBepInExPack);
-  context.registerInstaller("survivallog-bepinex-layout", PRIORITY.bepinexLayout, testBepInExLayout, installBepInExLayout);
-  context.registerInstaller("survivallog-plugin-folder", PRIORITY.pluginFolder, testPluginFolder, installPluginFolder);
-  context.registerInstaller("survivallog-loose-dlls", PRIORITY.looseDlls, testLooseDlls, installLooseDlls);
+  for (const { id, priority, test, install } of INSTALLERS) context.registerInstaller(id, priority, test, install);
+
+  // After the folder entries of Vortex (300), so Open Game Mods Folder comes first and the others follow it.
+  const SHORTCUT_POSITION = 310;
+  const isActive = () => selectors.activeGameId(context.api.getState()) === GAME_ID;
+  for (const entry of SHORTCUTS) {
+    const onClick = () => {
+      onShortcut(context.api, entry).catch((err) => log("warn", "shortcut failed", { label: entry.label, err }));
+    };
+    context.registerAction("mod-icons", SHORTCUT_POSITION, entry.icon, {}, entry.label, onClick, isActive);
+  }
 
   context.once(() => {
     ensureModTypeDirsOnDiscovery(context.api);

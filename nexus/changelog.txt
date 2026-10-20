@@ -1,3 +1,11 @@
+v1.0.2 - 2026-10-20
+Added: The folder menu of the Mods page opens the mods config folder, the BepInEx log, the Unity log, the saves folder, the Steam store page, and the wiki.
+Added: Vortex shows the real game version and tells you about a game update. Right after this update, Vortex shows "Game updated" once: nothing changed in the game.
+Added: Vortex refuses the Unity libraries file of the BepInEx pack page, which is not a mod, and shows how to use it by hand.
+Changed: Open Game Mods Folder opens the BepInEx plugins folder, not the game folder.
+Fixed: A mod with a BepInEx folder and a DLL next to it now installs that DLL too.
+Fixed: Vortex downloads only the BepInEx pack file from the pack page, never another main file of that page.
+
 v1.0.1 - 2026-10-18
 Changed: The extension now has a fixed id, so a new install replaces the old one. This works from 1.0.1 on.
 Changed: Smaller download (the game art is a JPEG now).
